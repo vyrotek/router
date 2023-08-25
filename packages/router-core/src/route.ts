@@ -284,7 +284,7 @@ export type UpdatableRouteOptions<
   >
   // The content to be rendered when the route encounters an error
   errorComponent?: RegisteredRouteErrorComponent<
-    { error: unknown } & Partial<
+    { error: unknown, info: any } & Partial<
       RouteProps<
         TLoader,
         TFullSearchSchema,

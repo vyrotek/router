@@ -159,7 +159,15 @@ export interface RouterOptions<
     RouteProps<unknown, AnySearchSchema, AnyPathParams, AnyContext, AnyContext>
   >
   defaultErrorComponent?: RegisteredRouteErrorComponent<
-    RouteProps<unknown, AnySearchSchema, AnyPathParams, AnyContext, AnyContext>
+    { error: unknown, info: any } & Partial<
+      RouteProps<
+        unknown, 
+        AnySearchSchema,
+        AnyPathParams, 
+        AnyContext, 
+        AnyContext
+      >
+    >
   >
   defaultPendingComponent?: RegisteredRouteComponent<
     RouteProps<unknown, AnySearchSchema, AnyPathParams, AnyContext, AnyContext>
