@@ -972,18 +972,20 @@ function CatchBoundaryInner(props: {
     // props.reset()
   }, [props.errorState.error])
 
-  const router = useRouter()
-  const route = router.getRoute(locationKey)
+  const router = useRouter();
+  const matches = useMatches();
+  const nearestRouteId = matches[0]?.id;
+  const route = nearestRouteId ? router.getRoute(nearestRouteId as any) : null;
 
   if (props.errorState.error && activeErrorState.error) {
     return React.createElement(errorComponent, {
       ...activeErrorState,
-      useLoader: route.useLoader,
-      useMatch: route.useMatch,
-      useContext: route.useContext,
-      useRouteContext: route.useRouteContext,
-      useSearch: route.useSearch,
-      useParams: route.useParams,
+      useLoader: route?.useLoader,
+      useMatch: route?.useMatch,
+      useContext: route?.useContext,
+      useRouteContext: route?.useRouteContext,
+      useSearch: route?.useSearch,
+      useParams: route?.useParams,
     })
   }
 
